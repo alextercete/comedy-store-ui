@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="comedyStore">
 
   <head>
     <meta charset="utf-8" />
@@ -11,7 +11,20 @@
     <h1>Comedy Store</h1>
     <p>Welcome!</p>
 
+    <cs-user-login></cs-user-login>
+    <cs-random-joke></cs-random-joke>
+    <cs-upcoming-events></cs-upcoming-events>
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="chuck-norris-jokes-archive/jokes-archive.module.js"></script>
     <script src="app.js"></script>
+    <script src="user-login/user-login.view-model.js"></script>
+    <script src="user-login/user-login.directive.js"></script>
+    <script src="random-joke/random-joke.view-model.js"></script>
+    <script src="random-joke/random-joke.directive.js"></script>
+    <script src="upcoming-events/upcoming-events.view-model.js"></script>
+    <script src="upcoming-events/upcoming-events.directive.js"></script>
+    <script src="chuck-norris-jokes-archive/jokes-archive.js"></script>
   </body>
 
 </html>
