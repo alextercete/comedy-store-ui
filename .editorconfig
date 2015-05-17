@@ -9,5 +9,5 @@ trim_trailing_whitespace = true
 [*.html]
 indent_size = 2
 
-[package.json]
+[{.jscsrc,.jshintrc,package.json}]
 indent_size = 2
