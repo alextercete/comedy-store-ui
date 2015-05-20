@@ -9,7 +9,7 @@
         return {
             scope: {},
             restrict: 'E',
-            template: '<p>This is the user login!</p>',
+            templateUrl: 'user-login/user-login.html',
             controller: 'UserLoginViewModel',
             controllerAs: 'viewModel'
         };

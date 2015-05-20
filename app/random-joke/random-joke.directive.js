@@ -9,7 +9,7 @@
         return {
             scope: {},
             restrict: 'E',
-            template: '<p>This is a random joke!</p>',
+            templateUrl: 'random-joke/random-joke.html',
             controller: 'RandomJokeViewModel',
             controllerAs: 'viewModel'
         };

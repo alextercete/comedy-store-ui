@@ -9,7 +9,7 @@
         return {
             scope: {},
             restrict: 'E',
-            template: '<p>These are the upcoming events!</p>',
+            templateUrl: 'upcoming-events/upcoming-events.html',
             controller: 'UpcomingEventsViewModel',
             controllerAs: 'viewModel'
         };

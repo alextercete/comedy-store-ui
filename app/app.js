@@ -3,6 +3,7 @@
 
     angular
         .module('comedyStore', [
+            'comedyStore.templates',
             'chuckNorris.jokesArchive'
         ]);
 })();

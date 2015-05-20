@@ -7,7 +7,8 @@
     "build": "npm run build:css && npm run build:html && npm run build:js",
     "build:css": "jscat app/app.css > dist/app.css",
     "build:html": "jscat app/index.html > dist/index.html",
-    "build:js": "node tasks/build.js > dist/bundle.js && npm run build:js:vendor",
+    "build:js": "node tasks/build.js > dist/bundle.js && npm run build:js:templates && npm run build:js:vendor",
+    "build:js:templates": "npm-html2js -i \"app/**/!(index).html\" -b \"app\" -m \"comedyStore.templates\" -o \"dist/templates.js\"",
     "build:js:vendor": "jscat node_modules/angular/angular.js > dist/vendor.js",
     "clean": "rimraf dist/*",
     "lint": "npm run lint:style && npm run lint:quality",
@@ -32,7 +33,9 @@
     "karma": "^0.12.31",
     "karma-cli": "0.0.4",
     "karma-jasmine": "^0.3.5",
+    "karma-ng-html2js-preprocessor": "^0.1.2",
     "karma-phantomjs-launcher": "^0.1.4",
+    "npm-html2js": "^0.1.8",
     "rimraf": "^2.3.3",
     "shelljs": "^0.4.0"
   }
