@@ -11,7 +11,10 @@
             restrict: 'E',
             templateUrl: 'random-joke/random-joke.html',
             controller: 'RandomJokeViewModel',
-            controllerAs: 'viewModel'
+            controllerAs: 'viewModel',
+            link: function (scope, element, attributes, viewModel) {
+                viewModel.initialise();
+            }
         };
     }
 })();

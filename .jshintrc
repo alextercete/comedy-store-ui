@@ -23,6 +23,7 @@
     "angular": false,
     "$": false,
     "module": false,
-    "inject": false
+    "inject": false,
+    "sinon": false
   }
 }
