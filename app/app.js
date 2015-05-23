@@ -4,6 +4,7 @@
     angular
         .module('comedyStore', [
             'comedyStore.templates',
-            'chuckNorris.jokesArchive'
+            'chuckNorris.jokesArchive',
+            'ngCookies'
         ]);
 })();
