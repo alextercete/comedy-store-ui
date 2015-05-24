@@ -22,6 +22,7 @@
   "globals": {
     "angular": false,
     "$": false,
+    "_": false,
     "module": false,
     "inject": false,
     "sinon": false

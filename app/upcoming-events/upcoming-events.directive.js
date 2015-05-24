@@ -11,7 +11,10 @@
             restrict: 'E',
             templateUrl: 'upcoming-events/upcoming-events.html',
             controller: 'UpcomingEventsViewModel',
-            controllerAs: 'viewModel'
+            controllerAs: 'viewModel',
+            link: function (scope, element, attributes, viewModel) {
+                viewModel.initialise();
+            }
         };
     }
 })();

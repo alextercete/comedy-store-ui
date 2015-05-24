@@ -1,1 +1,12 @@
-<p>These are the upcoming events!</p>
+<h3>Upcoming events</h3>
+<ul>
+  <li ng-repeat="upcomingEvent in ::viewModel.upcomingEvents">
+    <div>
+      <em>{{viewModel.getFormattedDayAndMonthFor(upcomingEvent)}}</em>
+      <strong>{{viewModel.getFormattedDayOfWeekAndTimeFor(upcomingEvent)}}</strong>
+      <span>{{viewModel.getFormattedPriceFor(upcomingEvent)}}</span>
+    </div>
+    <h4>{{upcomingEvent.title}}</h4>
+    <p>With {{viewModel.getFormattedArtistNamesFor(upcomingEvent)}}</p>
+  </li>
+</ul>
