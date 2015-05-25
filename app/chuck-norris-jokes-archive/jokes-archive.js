@@ -5,29 +5,35 @@
         .module('chuckNorris.jokesArchive')
         .service('jokesArchive', JokesArchive);
 
-    JokesArchive.$inject = ['$http'];
+    JokesArchive.$inject = ['apiClient'];
 
-    function JokesArchive($http) {
+    function JokesArchive(apiClient) {
         this.getRandom = getRandom;
 
-        function get(path) {
-            var config;
+        function getNumberOfJokesAvailable() {
+            return apiClient.get('jokes/count');
+        }
 
-            config = {
-                method: 'GET',
-                url: 'http://api.icndb.com/' + path,
-                params: {
-                    escape: 'javascript'
+        function getRandom(idsToAvoid) {
+            return getNumberOfJokesAvailable().then(function (numberOfJokesAvailable) {
+                if (numberOfJokesAvailable === idsToAvoid.length) {
+                    return getRandomJoke();
                 }
-            };
 
-            return $http(config).then(function (response) {
-                return response.data.value;
+                return getRandomJokeNotIn(idsToAvoid);
             });
         }
 
-        function getRandom() {
-            return get('jokes/random').then(function (value) {
+        function getRandomJoke() {
+            return apiClient.get('jokes/random');
+        }
+
+        function getRandomJokeNotIn(ids) {
+            return getRandomJoke().then(function (value) {
+                if (_.contains(ids, value.id)) {
+                    return getRandomJokeNotIn(ids);
+                }
+
                 return {
                     id: value.id,
                     text: value.joke

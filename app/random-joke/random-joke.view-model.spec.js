@@ -1,7 +1,8 @@
 describe('RandomJokeViewModel', function () {
     var $q,
         jokesArchive,
-        viewModel;
+        viewModel,
+        visitorStorage;
 
     beforeEach(module('comedyStore'));
 
@@ -15,8 +16,14 @@ describe('RandomJokeViewModel', function () {
             getRandom: sinon.stub()
         };
 
+        visitorStorage = {
+            addSeenJoke: sinon.stub(),
+            getSeenJokes: sinon.stub()
+        };
+
         viewModel = $controller('RandomJokeViewModel', {
-            jokesArchive: jokesArchive
+            jokesArchive: jokesArchive,
+            visitorStorage: visitorStorage
         });
     }));
 
@@ -24,13 +31,39 @@ describe('RandomJokeViewModel', function () {
         $rootScope.$digest();
     }));
 
-    it('should provide a random joke', function () {
-        jokesArchive.getRandom.returns(promiseOf({
+    it('should always provide a new random joke during a visitor session', function () {
+        visitorStorage.getSeenJokes.returns([1, 2]);
+
+        jokesArchive.getRandom.withArgs([1, 2]).returns(promiseOf({
             text: 'Knock, knock'
         }));
 
         viewModel.getRandomJoke().then(function () {
             expect(viewModel.randomJokeText).toBe('Knock, knock');
+        });
+    });
+
+    it('should mark joke as seen by the visitor', function () {
+        visitorStorage.getSeenJokes.returns([1, 2]);
+
+        jokesArchive.getRandom.returns(promiseOf({
+            id: 3
+        }));
+
+        viewModel.getRandomJoke().then(function () {
+            expect(visitorStorage.addSeenJoke).toHaveBeenCalledWith(3);
+        });
+    });
+
+    it('should not mark joke as seen by the visitor twice', function () {
+        visitorStorage.getSeenJokes.returns([1, 2]);
+
+        jokesArchive.getRandom.returns(promiseOf({
+            id: 1
+        }));
+
+        viewModel.getRandomJoke().then(function () {
+            expect(visitorStorage.addSeenJoke).not.toHaveBeenCalled();
         });
     });
 
