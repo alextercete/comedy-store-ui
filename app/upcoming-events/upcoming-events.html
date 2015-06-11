@@ -1,12 +1,12 @@
 <h3>Upcoming events</h3>
-<ul>
-  <li ng-repeat="upcomingEvent in ::viewModel.upcomingEvents">
+<ul class="list-group">
+  <li ng-repeat="upcomingEvent in ::viewModel.upcomingEvents" class="list-group-item">
+    <h4 class="list-group-item-heading">{{upcomingEvent.title}}</h4>
+    <p class="list-group-item-text">With {{viewModel.getFormattedArtistNamesFor(upcomingEvent)}}</p>
     <div>
-      <em>{{viewModel.getFormattedDayAndMonthFor(upcomingEvent)}}</em>
-      <strong>{{viewModel.getFormattedDayOfWeekAndTimeFor(upcomingEvent)}}</strong>
-      <span>{{viewModel.getFormattedPriceFor(upcomingEvent)}}</span>
+      <span class="label label-default">{{viewModel.getFormattedDayAndMonthFor(upcomingEvent)}}</span>
+      <span class="label label-primary">{{viewModel.getFormattedDayOfWeekAndTimeFor(upcomingEvent)}}</span>
+      <span class="small">{{viewModel.getFormattedPriceFor(upcomingEvent)}}</span>
     </div>
-    <h4>{{upcomingEvent.title}}</h4>
-    <p>With {{viewModel.getFormattedArtistNamesFor(upcomingEvent)}}</p>
   </li>
 </ul>

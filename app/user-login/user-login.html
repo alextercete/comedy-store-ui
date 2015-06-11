@@ -1,8 +1,9 @@
-<div ng-if="viewModel.isUserLoggedIn()">
-  <p>Hello, <em>{{viewModel.getUserEmail()}}</em>!</p>
-  <button ng-click="viewModel.logOut()">Log out</button>
-</div>
-<form ng-if="!viewModel.isUserLoggedIn()" ng-submit="viewModel.logIn()">
-  <input type="text" ng-model="viewModel.userEmail" placeholder="Email" />
-  <input type="submit" value="Log in" />
+<p ng-if="viewModel.isUserLoggedIn()" class="navbar-text">
+  Hello, <em>{{viewModel.getUserEmail()}}</em> | <a href="#" ng-click="viewModel.logOut()">Log out</a>
+</p>
+<form ng-if="!viewModel.isUserLoggedIn()" ng-submit="viewModel.logIn()" class="navbar-form">
+  <div class="form-group">
+    <input type="text" ng-model="viewModel.userEmail" placeholder="Email" class="form-control" />
+  </div>
+  <input type="submit" value="Log in" class="btn btn-primary" />
 </form>
