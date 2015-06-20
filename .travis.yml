@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - stable
+
+before_script:
+  - npm run lint
+  - npm test
+
+script:
+  - npm run build
+
+deploy:
+  provider: divshot
+  skip_cleanup: true
+  api_key:
+    secure: QIdjWgkWhG9b1Ky2IhgSLMOqpqS92zD5rx8HuI4Fju4WsseqEJpvaZRJuoshX26OS9OAohsvEiVkC48sVZ1gOKpAyF0XZ1fMPpE+y7Xc8vHmLKYLo6rm2zxC7m3ox3Yd/xz/eT5255KGc05UFgk1dSleA9uwJRa6X8cQ6vnf9Z9YLNHQ89R5w8jY8j9WVBkRxaJAvTwqL5IHnMQ7T0acdd2Y2LwmsMznvB/6WpsHrlXCZ0CtsTqCD221qNgVDBvRv7+O+m0zlSKzLZq7NhWGXsqHwhfoOjQoC+SxGCAGhnoBpU6PZXpVzLKcadaJ4n2iYmAIGBFoC5yUWxTTo7ElNx7xVdNzqBD8rpwaOXz+iR5ncyxSm3o7GUYuArhmYPID4qBY3mwHdehAWPpjIesZ/ZEJGtwEjv34YCucILksm6rr0asstUCZ75Sj2oZH9WvVozxWfo2SKNUlCLw+bRUry0neC8Joko40UkBePAypRmlozdqfm9SI2k/D6MWR8AonI9x9R1XRjY2y3dDu/0Xq1Wz5dknFp87IEhCuEQkjAoLvUhmBuVenbo06lZ3Dv958tpLfogm/2AC2vhaGs9isrw5t5SiRkTHrfJnx8pEm0n59pNNJbo377jtt7BgWb7BsJhTptOaSZ4TDlqkAgyRdtF8Jk7ifYhiy9mJxhzcJeg0=

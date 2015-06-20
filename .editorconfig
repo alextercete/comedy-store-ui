@@ -6,8 +6,5 @@ charset = utf-8
 indent_size = 4
 trim_trailing_whitespace = true
 
-[*.html]
-indent_size = 2
-
-[{.jscsrc,.jshintrc,*.json}]
+[{.jscsrc,.jshintrc,*.html,*.json,*.yml}]
 indent_size = 2
